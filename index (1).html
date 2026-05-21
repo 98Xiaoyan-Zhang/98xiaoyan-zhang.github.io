@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Xiaoyan Zhang — biomedical engineering researcher developing acoustofluidic devices for precision biomedicine, cytometry, liquid biopsy and transdermal drug delivery." />
+  <title>Xiaoyan Zhang | Acoustofluidics & Biomedical Engineering</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --ink: #17212b;
+      --muted: #66758a;
+      --primary: #0f5e73;
+      --primary-2: #1d8097;
+      --accent: #d28b36;
+      --accent-soft: #fff3df;
+      --blue-soft: #e8f4f7;
+      --line: #dfe7ef;
+      --shadow: 0 22px 55px rgba(15, 33, 45, 0.10);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(29,128,151,0.16), transparent 28%),
+        radial-gradient(circle at 88% 2%, rgba(210,139,54,0.14), transparent 26%),
+        linear-gradient(180deg, #fbfdff 0%, var(--bg) 48%, #ffffff 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 1180px; margin: 0 auto; padding: 28px 22px 68px; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0 34px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      box-shadow: 0 12px 25px rgba(15,94,115,0.24);
+    }
+
+    nav { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: 0.94rem; font-weight: 650; }
+    nav a:hover { color: var(--primary); }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main, .hero-side, .card, .stat, .spotlight-card {
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(223,231,239,0.95);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .hero-main {
+      border-radius: var(--radius-xl);
+      padding: 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -84px;
+      width: 310px;
+      height: 310px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(15,94,115,0.17), rgba(210,139,54,0.14));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 13px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--primary);
+      font-size: 0.86rem;
+      font-weight: 850;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 5.5vw, 5.05rem);
+      line-height: 1;
+      letter-spacing: -0.065em;
+      max-width: 780px;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main .lead {
+      color: var(--muted);
+      font-size: 1.12rem;
+      max-width: 735px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 32px; position: relative; z-index: 1; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 17px;
+      border-radius: 15px;
+      font-weight: 850;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 16px 30px rgba(15,94,115,0.25); }
+    .btn-secondary { background: #fff; color: var(--primary); border: 1px solid var(--line); }
+    .btn-small { padding: 8px 11px; border-radius: 11px; font-size: 0.84rem; }
+
+    .hero-side {
+      border-radius: var(--radius-xl);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--primary), #88bdca);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: 950;
+      margin-bottom: 20px;
+      box-shadow: 0 18px 34px rgba(15,94,115,0.22);
+    }
+
+    .profile-photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 30px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin-bottom: 20px;
+      border: 3px solid #ffffff;
+      box-shadow: 0 18px 34px rgba(15,94,115,0.22);
+      background: #ffffff;
+    }
+
+    .hero-side h2 { font-size: 1.42rem; line-height: 1.24; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .hero-side p { color: var(--muted); font-size: 0.98rem; }
+    .contact-list { display: grid; gap: 10px; color: var(--muted); font-size: 0.92rem; }
+    .contact-list strong { color: var(--ink); }
+    .contact-list a { color: var(--primary); font-weight: 750; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 24px 0;
+    }
+
+    .stat { border-radius: var(--radius-lg); padding: 23px; }
+    .stat .number { font-size: 2.1rem; line-height: 1; color: var(--primary); font-weight: 950; margin-bottom: 8px; }
+    .stat .label { color: var(--muted); font-size: 0.91rem; }
+    .stat.highlight { background: linear-gradient(135deg, #fff, var(--accent-soft)); border-color: #f3d7a9; }
+    .stat.highlight .number { color: var(--accent); }
+
+    .section { margin-top: 24px; }
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin: 0 4px 15px;
+    }
+    .section-title h2 { font-size: 1.7rem; letter-spacing: -0.04em; }
+    .section-title p { color: var(--muted); font-size: 0.94rem; max-width: 620px; }
+
+    .grid-2 { display: grid; grid-template-columns: 0.88fr 1.12fr; gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+
+    .card {
+      border-radius: var(--radius-xl);
+      padding: 32px;
+    }
+
+    .card h2, .card h3 { letter-spacing: -0.03em; }
+    .card h2 { font-size: 1.55rem; margin-bottom: 15px; }
+    .card h3 { color: var(--primary); font-size: 1.04rem; margin: 20px 0 7px; }
+    .card p, .card li { color: var(--muted); font-size: 0.98rem; }
+    ul { padding-left: 19px; display: grid; gap: 10px; }
+
+    .spotlight-card {
+      border-radius: var(--radius-lg);
+      padding: 23px;
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .spotlight-card .tag {
+      display: inline-flex;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--primary);
+      font-size: 0.76rem;
+      font-weight: 900;
+      margin-bottom: 13px;
+    }
+    .spotlight-card h3 { font-size: 1.1rem; line-height: 1.28; margin-bottom: 8px; color: var(--ink); }
+    .spotlight-card p { color: var(--muted); font-size: 0.93rem; }
+
+    .pill-group { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
+    .pill {
+      padding: 8px 11px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--primary);
+      font-size: 0.84rem;
+      font-weight: 850;
+    }
+
+    .timeline { display: grid; gap: 17px; }
+    .timeline-item { padding-left: 19px; border-left: 3px solid var(--blue-soft); position: relative; }
+    .timeline-item::before { content: ""; width: 11px; height: 11px; border-radius: 999px; background: var(--accent); position: absolute; left: -7px; top: 8px; }
+    .date { color: var(--primary); font-weight: 900; font-size: 0.86rem; margin-bottom: 3px; }
+    .title { font-weight: 900; color: var(--ink); }
+
+    .pub-list { display: grid; gap: 13px; }
+    .pub-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: start;
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fbfdff;
+    }
+    .pub-item.featured { border-color: #b8dbe4; background: linear-gradient(135deg, #ffffff, #eef8fb); }
+    .pub-title { font-weight: 900; color: var(--ink); line-height: 1.35; margin-bottom: 5px; }
+    .pub-meta { color: var(--muted); font-size: 0.91rem; }
+    .pub-note {
+      display: inline-flex;
+      margin-top: 8px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #925918;
+      font-weight: 850;
+      font-size: 0.75rem;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+      padding: 8px 11px;
+      border-radius: 12px;
+      background: #fff;
+      border: 1px solid var(--line);
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 0.82rem;
+    }
+    .link-chip:hover { border-color: var(--primary); }
+    .link-chip.disabled { color: var(--muted); background: #f7f9fb; cursor: default; }
+
+    .funding-list { display: grid; gap: 13px; }
+    .funding-item {
+      display: grid;
+      grid-template-columns: 115px 1fr;
+      gap: 16px;
+      padding: 17px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #fbfdff;
+    }
+    .amount { color: var(--accent); font-weight: 950; font-size: 1.08rem; }
+    .funding-title { color: var(--ink); font-weight: 900; margin-bottom: 4px; }
+
+    .recognition {
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      background: linear-gradient(135deg, #17394a, #0f5e73);
+      color: #fff;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .recognition::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      right: -80px;
+      top: -80px;
+    }
+    .recognition h2 { font-size: 1.65rem; letter-spacing: -0.04em; margin-bottom: 14px; position: relative; z-index: 1; }
+    .recognition p, .recognition li { color: rgba(255,255,255,0.80); position: relative; z-index: 1; }
+    .recognition a { color: #fff; font-weight: 900; text-decoration: underline; text-underline-offset: 3px; }
+
+    footer {
+      margin-top: 24px;
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      background: #ffffff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    footer h2 { letter-spacing: -0.03em; }
+    footer p { color: var(--muted); }
+    footer a { color: var(--primary); font-weight: 900; }
+
+    @media (max-width: 930px) {
+      header { position: static; flex-direction: column; align-items: flex-start; }
+      .hero, .grid-2, .grid-3, .stats { grid-template-columns: 1fr; }
+      .hero-main { padding: 38px; }
+      .section-title { flex-direction: column; align-items: flex-start; }
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 20px 14px 46px; }
+      .hero-main, .hero-side, .card, .recognition, footer { padding: 24px; border-radius: 22px; }
+      .pub-item, .funding-item { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <a class="brand" href="#top" aria-label="Back to top"><span class="brand-mark">XZ</span> Xiaoyan Zhang</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#funding">Funding</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-main">
+        <div class="eyebrow">Research Associate · Cardiff University · Biomedical Engineering</div>
+        <h1>Acoustofluidic technologies for precision biomedicine.</h1>
+        <p class="lead">
+          I develop sound-powered microdevices that manipulate biological samples from extracellular vesicles and cells
+          to tissue-level delivery interfaces, with applications in cytopathological screening, liquid biopsy,
+          single-cell manipulation and non-invasive transdermal drug delivery.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#publications">Key publications</a>
+          <a class="btn btn-secondary" href="https://scholar.google.com/citations?hl=en&user=Ob87d_0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a>
+          <a class="btn btn-secondary" href="https://profiles.cardiff.ac.uk/staff/zhangx183" target="_blank" rel="noopener">Cardiff Profile</a>
+          <a class="btn btn-secondary" href="mailto:zhangx183@cardiff.ac.uk">Contact</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div>
+          <img class="profile-photo" src="data:image/jpeg;base64,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" alt="Portrait of Xiaoyan Zhang" />
+          <h2>Xiaoyan Zhang</h2>
+          <p>Research Associate, Cardiff University School of Medicine</p>
+        </div>
+        <div class="contact-list">
+          <div><strong>Focus:</strong> Acoustofluidics, liquid biopsy, cytometry, transdermal delivery</div>
+          <div><strong>PhD:</strong> Biomedical Engineering, Cardiff University</div>
+          <div><strong>Email:</strong> <a href="mailto:zhangx183@cardiff.ac.uk">zhangx183@cardiff.ac.uk</a></div>
+          <div><strong>Profiles:</strong> <a href="https://scholar.google.com/citations?hl=en&user=Ob87d_0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Google Scholar</a> · <a href="https://profiles.cardiff.ac.uk/staff/zhangx183" target="_blank" rel="noopener">Cardiff University</a></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="Profile highlights">
+      <div class="stat highlight"><div class="number">PI</div><div class="label">WCRC Career Starter Award on acoustic cytometry for urological cancer detection</div></div>
+      <div class="stat"><div class="number">£195k</div><div class="label">Competitive research funding portfolio</div></div>
+      <div class="stat"><div class="number">172</div><div class="label">Citations</div></div>
+      <div class="stat"><div class="number">8</div><div class="label">First-author and co-author research outputs</div></div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-title">
+        <h2>Research identity</h2>
+        <p>A profile built around engineering innovation, biomedical validation and translation toward practical medical devices.</p>
+      </div>
+      <div class="grid-3">
+        <article class="spotlight-card">
+          <span class="tag">Cytometry</span>
+          <h3>Multi-view acoustic rotation cytometry</h3>
+          <p>Developing acoustic cell rotation and deformation approaches for pre-cytopathological screening and urological cancer detection.</p>
+        </article>
+        <article class="spotlight-card">
+          <span class="tag">Liquid biopsy</span>
+          <h3>Extracellular vesicle enrichment</h3>
+          <p>Building ultrafast acoustic enrichment platforms for nanoparticles and extracellular vesicles in cancer and infectious disease diagnostics.</p>
+        </article>
+        <article class="spotlight-card">
+          <span class="tag">Drug delivery</span>
+          <h3>Acoustic-droplet transdermal delivery</h3>
+          <p>Creating acoustic droplet-based permeation strategies for rapid, non-invasive and controllable delivery across tissue barriers.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section grid-2" id="research">
+      <div class="card">
+        <h2>Research interests</h2>
+        <p>
+          My work combines acoustics, microfluidics, bioengineering and translational device development to address biomedical problems where sample handling,
+          diagnostic sensitivity or delivery efficiency are limiting factors.
+        </p>
+        <div class="pill-group">
+          <span class="pill">Acoustofluidic devices</span>
+          <span class="pill">Extracellular vesicles</span>
+          <span class="pill">Liquid biopsy</span>
+          <span class="pill">Cell manipulation</span>
+          <span class="pill">Single-cell printing</span>
+          <span class="pill">Transdermal delivery</span>
+          <span class="pill">Medical device translation</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Core expertise</h2>
+        <h3>Acoustofluidic engineering and system integration</h3>
+        <p>Acoustic/microfluidic platform design, microfabrication, transducer integration, CAD/3D prototyping, COMSOL simulation, acoustic-field analysis and device characterisation.</p>
+        <h3>Biomedical experimental validation</h3>
+        <p>Mammalian cell culture, H&amp;E staining, fluorescence microscopy, flow cytometry, cryosectioning, extracellular vesicle handling and image-based quantitative analysis.</p>
+        <h3>Translation and leadership</h3>
+        <p>Grant writing, interdisciplinary collaboration, industry-facing technology development, early-stage commercialisation and student mentoring.</p>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <div class="card">
+        <h2>Career timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="date">2025–Present</div><div class="title">Research Associate</div><p>Cardiff University School of Medicine, supported by the Wales Cancer Research Centre Career Starter Award.</p></div>
+          <div class="timeline-item"><div class="date">2025</div><div class="title">Research Assistant / Co-Investigator</div><p>Cardiff University School of Engineering, developing translational acoustofluidic platforms.</p></div>
+          <div class="timeline-item"><div class="date">2021–2025</div><div class="title">PhD in Biomedical Engineering</div><p>Cardiff University, focusing on acoustofluidic manipulation for precision biomedicine.</p></div>
+          <div class="timeline-item"><div class="date">2016–2020</div><div class="title">B.S. in Biological Science</div><p>Huazhong Agricultural University, National Training Base of Biology.</p></div>
+        </div>
+      </div>
+
+      <div class="recognition">
+        <h2>Selected recognition</h2>
+        <ul>
+          <li>Research featured by <a href="https://news.cancerresearchuk.org/2026/02/26/could-sound-waves-help-doctors-diagnose-prostate-cancer-blood-test/" target="_blank" rel="noopener">Cancer Research UK News</a> for acoustofluidic vesicle enrichment in prostate cancer liquid biopsy.</li>
+          <li>Granted the UK Global Talent Visa with endorsement from UKRI.</li>
+          <li>First award in High-End Equipment Manufacturing, 7th China Shenzhen Innovation and Entrepreneurship International Competition.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <div class="section-title">
+        <h2>Selected publications</h2>
+        <p>Linked publication cards highlight first-author work and representative acoustofluidics contributions.</p>
+      </div>
+      <div class="card">
+        <div class="pub-list">
+          <article class="pub-item featured">
+            <div>
+              <div class="pub-title">Surface Acoustic Wave-Enhanced Multi-View Acoustofluidic Rotation Cytometry (MARC) for Pre-Cytopathological Screening</div>
+              <div class="pub-meta">X. Zhang, P. Dumčius, R. Mikhaylov, et al. Advanced Science, 2024, 11, 2403574.</div>
+              <span class="pub-note">First-author · Advanced Science</span>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1002/advs.202403574" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item featured">
+            <div>
+              <div class="pub-title">Acoustic-Droplet-Activated Permeation for Rapid and Non-Invasive Transdermal Delivery</div>
+              <div class="pub-meta">X. Zhang, Y. Li, P. Dumčius, et al. Submitted.</div>
+              <span class="pub-note">First-author · Submitted manuscript</span>
+            </div>
+            <span class="link-chip disabled">Submitted</span>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">Multidirectionally Patterned Interdigital Transducers for Enhancing Acoustofluidic Streaming with Flexible Printed Circuit Board</div>
+              <div class="pub-meta">M. Stringer, P. Dumčius, X. Zhang, et al. Advanced Functional Materials, 2025, 2421308.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1002/adfm.202421308" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">Enhanced Integrated Acoustofluidics with Printed Circuit Board Electrodes Attached to Piezoelectric Film Coated Substrate</div>
+              <div class="pub-meta">C. Sun, R. Mikhaylov, X. Yang, X. Zhang, et al. Ultrasonics, 2025, 147, 107531.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1016/j.ultras.2024.107531" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">Dual-Wave Acoustofluidic Centrifuge for Ultrafast Concentration of Nanoparticles and Extracellular Vesicles</div>
+              <div class="pub-meta">P. Dumčius, R. Mikhaylov, X. Zhang, et al. Small, 2023, 19, 2300390.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1002/smll.202300390" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">Methodologies, Technologies, and Strategies for Acoustic Streaming-Based Acoustofluidics</div>
+              <div class="pub-meta">M. Stringer, Z. Zeng, X. Zhang, et al. Applied Physics Reviews, 2023, 10, 011315.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1063/5.0134646" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">An Enhanced Tilted-Angle Acoustic Tweezer for Mechanical Phenotyping of Cancer Cells</div>
+              <div class="pub-meta">H. Wang, J. Boardman, X. Zhang, et al. Analytica Chimica Acta, 2023, 1255, 341120.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1016/j.aca.2023.341120" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+
+          <article class="pub-item">
+            <div>
+              <div class="pub-title">A Reconfigurable and Portable Acoustofluidic System Based on Flexible Printed Circuit Board for the Manipulation of Microspheres</div>
+              <div class="pub-meta">R. Mikhaylov, M. S. Martin, P. Dumčius, H. Wang, F. Wu, X. Zhang, et al. Journal of Micromechanics and Microengineering, 2021, 31, 074003.</div>
+            </div>
+            <a class="link-chip" href="https://doi.org/10.1088/1361-6439/ac0515" target="_blank" rel="noopener">DOI ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funding">
+      <div class="section-title">
+        <h2>Competitive research funding</h2>
+        <p>Funding record highlighting PI leadership, co-investigator roles and translational project development.</p>
+      </div>
+      <div class="card">
+        <div class="funding-list">
+          <div class="funding-item"><div class="amount">£58,881</div><div><div class="funding-title">Wales Cancer Research Centre Career Starter Award</div><p>An Enhanced Acoustic Cell Rotation &amp; Deformation Cytometry for Non-Invasive Detection of Urological Cancers. Principal Investigator.</p></div></div>
+          <div class="funding-item"><div class="amount">£19,936</div><div><div class="funding-title">EPSRC IAA Top Up</div><p>Ultrafast acoustic nanoparticle centrifuge to enrich dengue virus for large-scale diagnosis. Co-investigator.</p></div></div>
+          <div class="funding-item"><div class="amount">£19,775</div><div><div class="funding-title">EPSRC H-IAA FoF</div><p>Ultrafast acoustic nanoparticle centrifuge for dengue virus enrichment. Co-investigator and named Research Assistant.</p></div></div>
+          <div class="funding-item"><div class="amount">£93,000</div><div><div class="funding-title">EPSRC-Industry DTP Studentship</div><p>Acoustofluidics Manipulation of Cells and Tissue for Precision Biomedicine. Proposal fully drafted by X. Zhang based on PhD research projects.</p></div></div>
+          <div class="funding-item"><div class="amount">£3,000</div><div><div class="funding-title">CU-DUT Collaboration Fund</div><p>Acoustic enrichment of extracellular vesicles for cancer detection. Named PhD student.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section grid-2">
+      <div class="card">
+        <h2>Talks and presentations</h2>
+        <ul>
+          <li>Invited talk at German Cancer Research Center Site Dresden on acoustofluidic devices for multiscale biomanipulation.</li>
+          <li>Oral presentation at Microacoustics and Microsensors Symposium 2025, Dyson Institute of Engineering and Technology.</li>
+          <li>Poster at UK Acoustofluidics SIG Meeting, University of Cambridge, on acoustic-enhanced transdermal delivery.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Open to collaboration</h2>
+        <p>
+          I am interested in collaborations involving acoustofluidic cytometry, extracellular vesicle enrichment,
+          liquid biopsy sample preparation, single-cell manipulation and translational biomedical device development.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:zhangx183@cardiff.ac.uk">Email me</a>
+          <a class="btn btn-secondary" href="https://scholar.google.com/citations?hl=en&user=Ob87d_0AAAAJ&view_op=list_works&sortby=pubdate" target="_blank" rel="noopener">Scholar profile</a>
+          <a class="btn btn-secondary" href="https://profiles.cardiff.ac.uk/staff/zhangx183" target="_blank" rel="noopener">Cardiff profile</a>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div>
+        <h2>Contact</h2>
+        <p>Biomedical engineering · acoustofluidics · precision biomedicine · translational medical devices</p>
+      </div>
+      <a href="mailto:zhangx183@cardiff.ac.uk">zhangx183@cardiff.ac.uk</a>
+    </footer>
+  </main>
+</body>
+</html>
