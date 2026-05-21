@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xiaoyan Zhang | Biomedical Engineering & Acoustofluidics</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --text: #1f2933;
+      --muted: #64748b;
+      --primary: #245c73;
+      --primary-soft: #e6f1f5;
+      --accent: #c78f4a;
+      --line: #e5e7eb;
+      --shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 72px; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 24px; padding: 18px 0 40px;
+    }
+    .brand { font-weight: 800; letter-spacing: 0.02em; color: var(--primary); font-size: 1.05rem; }
+    nav { display: flex; gap: 22px; color: var(--muted); font-size: 0.95rem; }
+    nav a:hover { color: var(--primary); }
+    .hero {
+      display: grid; grid-template-columns: 1.35fr 0.65fr;
+      gap: 28px; align-items: stretch; margin-bottom: 28px;
+    }
+    .hero-card, .profile-card, .section-card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 28px; box-shadow: var(--shadow);
+    }
+    .hero-card { padding: 52px; position: relative; overflow: hidden; }
+    .hero-card::after {
+      content: ""; position: absolute; width: 280px; height: 280px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(36, 92, 115, 0.13), rgba(199, 143, 74, 0.12));
+      right: -88px; top: -88px;
+    }
+    .tagline {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary-soft); color: var(--primary);
+      padding: 7px 13px; border-radius: 999px; font-weight: 700;
+      font-size: 0.86rem; margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.8rem); line-height: 1.02;
+      letter-spacing: -0.06em; margin-bottom: 22px;
+      max-width: 790px; position: relative; z-index: 1;
+    }
+    .hero p {
+      color: var(--muted); font-size: 1.12rem; max-width: 720px;
+      position: relative; z-index: 1;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px;
+      position: relative; z-index: 1;
+    }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 18px; border-radius: 14px; font-weight: 750;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary {
+      background: var(--primary); color: #ffffff;
+      box-shadow: 0 10px 20px rgba(36, 92, 115, 0.22);
+    }
+    .button-secondary { border: 1px solid var(--line); color: var(--primary); background: #ffffff; }
+    .profile-card {
+      padding: 30px; display: flex; flex-direction: column;
+      justify-content: space-between; min-height: 100%;
+    }
+    .avatar {
+      width: 94px; height: 94px; border-radius: 28px;
+      background: linear-gradient(135deg, var(--primary), #6ea4b5);
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-size: 2rem; font-weight: 850; margin-bottom: 24px;
+      box-shadow: 0 18px 34px rgba(36, 92, 115, 0.2);
+    }
+    .profile-card h2 { font-size: 1.35rem; line-height: 1.25; margin-bottom: 10px; }
+    .profile-card p { color: var(--muted); font-size: 0.98rem; margin-bottom: 18px; }
+    .mini-list { display: grid; gap: 11px; color: var(--muted); font-size: 0.94rem; }
+    .mini-list strong { color: var(--text); }
+    .stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 28px;
+    }
+    .stat {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: 22px; padding: 24px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+    .stat .number { font-size: 2rem; font-weight: 850; color: var(--primary); line-height: 1; margin-bottom: 8px; }
+    .stat .label { color: var(--muted); font-size: 0.92rem; }
+    .grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 24px; margin-top: 24px; }
+    .section-card { padding: 34px; }
+    .section-card h2 { font-size: 1.55rem; letter-spacing: -0.03em; margin-bottom: 18px; }
+    .section-card h3 { font-size: 1.02rem; margin: 22px 0 8px; color: var(--primary); }
+    .section-card p, .section-card li { color: var(--muted); font-size: 0.98rem; }
+    .section-card ul { padding-left: 18px; display: grid; gap: 9px; }
+    .pill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill {
+      padding: 8px 12px; border-radius: 999px;
+      background: var(--primary-soft); color: var(--primary);
+      font-weight: 700; font-size: 0.86rem;
+    }
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item { padding-left: 20px; border-left: 3px solid var(--primary-soft); position: relative; }
+    .timeline-item::before {
+      content: ""; width: 11px; height: 11px; border-radius: 999px;
+      background: var(--accent); position: absolute; left: -7px; top: 8px;
+    }
+    .timeline-item .date { font-size: 0.86rem; font-weight: 800; color: var(--primary); margin-bottom: 3px; }
+    .timeline-item .title { color: var(--text); font-weight: 800; margin-bottom: 2px; }
+    .publication { display: grid; gap: 14px; }
+    .pub-item { border-bottom: 1px solid var(--line); padding-bottom: 15px; }
+    .pub-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .pub-title { color: var(--text); font-weight: 800; margin-bottom: 4px; }
+    .pub-meta { color: var(--muted); font-size: 0.92rem; }
+    .funding-list { display: grid; gap: 14px; }
+    .funding-item {
+      display: grid; grid-template-columns: 110px 1fr; gap: 16px;
+      padding: 16px; border-radius: 18px; background: #fbfcfd; border: 1px solid var(--line);
+    }
+    .funding-amount { font-weight: 850; color: var(--accent); }
+    .funding-title { font-weight: 800; color: var(--text); margin-bottom: 2px; }
+    footer {
+      margin-top: 28px; padding: 32px; border-radius: 28px; background: #17394a;
+      color: #ffffff; display: flex; justify-content: space-between; gap: 24px;
+      align-items: center; flex-wrap: wrap;
+    }
+    footer p { color: rgba(255, 255, 255, 0.75); }
+    footer a { font-weight: 800; color: #ffffff; }
+    @media (max-width: 920px) {
+      header, nav { align-items: flex-start; }
+      header, footer { flex-direction: column; }
+      .hero, .grid, .stats { grid-template-columns: 1fr; }
+      .hero-card { padding: 36px; }
+    }
+    @media (max-width: 560px) {
+      nav { flex-wrap: wrap; gap: 12px; }
+      .page { padding: 20px 14px 48px; }
+      .section-card, .hero-card, .profile-card { border-radius: 22px; padding: 24px; }
+      .funding-item { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <a class="brand" href="#top">Xiaoyan Zhang</a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#funding">Funding</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="hero-card">
+        <div class="tagline">Biomedical Engineering · Acoustofluidics · Translational Devices</div>
+        <h1>Engineering sound-powered microdevices for precision biomedicine.</h1>
+        <p>
+          I am a biomedical engineering researcher developing acoustofluidic technologies for cell manipulation,
+          liquid biopsy, extracellular vesicle enrichment, cytometry, and non-invasive transdermal drug delivery.
+          My work bridges microfluidic device engineering, biomedical validation, and early-stage medical device translation.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:zhangx183@cardiff.ac.uk">Contact me</a>
+          <a class="button button-secondary" href="#publications">View publications</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div>
+          <div class="avatar">XZ</div>
+          <h2>Xiaoyan Zhang</h2>
+          <p>Research Associate, Cardiff University School of Medicine</p>
+          <div class="mini-list">
+            <div><strong>Location:</strong> Cardiff, United Kingdom</div>
+            <div><strong>Email:</strong> zhangx183@cardiff.ac.uk</div>
+            <div><strong>PhD:</strong> Biomedical Engineering, Cardiff University</div>
+            <div><strong>Current role:</strong> WCRC Career Starter Award Research Associate</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="stats" aria-label="Profile highlights">
+      <div class="stat"><div class="number">172</div><div class="label">Citations</div></div>
+      <div class="stat"><div class="number">£195k</div><div class="label">Competitive research funding</div></div>
+      <div class="stat"><div class="number">8</div><div class="label">Peer-reviewed / submitted publications</div></div>
+      <div class="stat"><div class="number">3</div><div class="label">Selected talks and presentations</div></div>
+    </section>
+
+    <section class="grid" id="about">
+      <div class="section-card">
+        <h2>About</h2>
+        <p>My research focuses on the design, fabrication, and validation of acoustic and microfluidic platforms that can manipulate biological samples across multiple scales, from nanoparticles and extracellular vesicles to cells and tissue-level delivery interfaces.</p>
+        <p style="margin-top: 14px;">I am particularly interested in translating acoustofluidic systems into practical biomedical tools for cytopathological screening, cancer liquid biopsy, single-cell analysis, and minimally invasive therapy.</p>
+      </div>
+
+      <div class="section-card">
+        <h2>Career timeline</h2>
+        <div class="timeline">
+          <div class="timeline-item"><div class="date">2025–Present</div><div class="title">Research Associate</div><p>Cardiff University School of Medicine, supported by the Wales Cancer Research Centre Career Starter Award.</p></div>
+          <div class="timeline-item"><div class="date">2025</div><div class="title">Research Assistant / Co-Investigator</div><p>Cardiff University School of Engineering, developing translational acoustofluidic platforms.</p></div>
+          <div class="timeline-item"><div class="date">2021–2025</div><div class="title">PhD in Biomedical Engineering</div><p>Cardiff University, focusing on acoustofluidic manipulation for precision biomedicine.</p></div>
+          <div class="timeline-item"><div class="date">2016–2020</div><div class="title">B.S. in Biological Science</div><p>Huazhong Agricultural University, National Training Base of Biology.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid" id="research">
+      <div class="section-card">
+        <h2>Research interests</h2>
+        <div class="pill-group">
+          <span class="pill">Acoustofluidic devices</span>
+          <span class="pill">Extracellular vesicle enrichment</span>
+          <span class="pill">Liquid biopsy</span>
+          <span class="pill">Cell manipulation</span>
+          <span class="pill">Single-cell printing</span>
+          <span class="pill">Transdermal drug delivery</span>
+          <span class="pill">Medical device translation</span>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h2>Core expertise</h2>
+        <h3>Acoustofluidic engineering and system integration</h3>
+        <p>Acoustic and microfluidic platform design, microfabrication, transducer integration, CAD/3D prototyping, COMSOL simulation, acoustic-field analysis, fluid-flow analysis, and device performance characterisation.</p>
+        <h3>Biomedical experimental validation</h3>
+        <p>Mammalian cell culture, H&amp;E staining, fluorescence microscopy, flow cytometry, cryosectioning, extracellular vesicle handling, and image-based quantitative analysis.</p>
+        <h3>Translation and leadership</h3>
+        <p>Grant writing, interdisciplinary collaboration, industry-facing technology development, early-stage commercialisation, and undergraduate/postgraduate mentoring.</p>
+      </div>
+    </section>
+
+    <section class="section-card" id="publications" style="margin-top: 24px;">
+      <h2>Selected publications</h2>
+      <div class="publication">
+        <div class="pub-item"><div class="pub-title">Surface Acoustic Wave-Enhanced Multi-View Acoustofluidic Rotation Cytometry for Pre-Cytopathological Screening</div><div class="pub-meta">X. Zhang, P. Dumčius, R. Mikhaylov, et al. Advanced Science, 2024.</div></div>
+        <div class="pub-item"><div class="pub-title">Acoustic-Droplet-Activated Permeation for Rapid and Non-Invasive Transdermal Delivery</div><div class="pub-meta">X. Zhang, Y. Li, P. Dumčius, et al. Submitted.</div></div>
+        <div class="pub-item"><div class="pub-title">Multidirectionally Patterned Interdigital Transducers for Enhancing Acoustofluidic Streaming with Flexible Printed Circuit Board</div><div class="pub-meta">M. Stringer, P. Dumčius, X. Zhang, et al. Advanced Functional Materials, 2025.</div></div>
+        <div class="pub-item"><div class="pub-title">Dual-Wave Acoustofluidic Centrifuge for Ultrafast Concentration of Nanoparticles and Extracellular Vesicles</div><div class="pub-meta">P. Dumčius, R. Mikhaylov, X. Zhang, et al. Small, 2023.</div></div>
+      </div>
+    </section>
+
+    <section class="section-card" id="funding" style="margin-top: 24px;">
+      <h2>Competitive research funding</h2>
+      <div class="funding-list">
+        <div class="funding-item"><div class="funding-amount">£58,881</div><div><div class="funding-title">Wales Cancer Research Centre Career Starter Award</div><p>An Enhanced Acoustic Cell Rotation &amp; Deformation Cytometry for Non-Invasive Detection of Urological Cancers. Principal Investigator.</p></div></div>
+        <div class="funding-item"><div class="funding-amount">£19,936</div><div><div class="funding-title">EPSRC IAA Top Up</div><p>Ultrafast acoustic nanoparticle centrifuge for enriching dengue virus for large-scale diagnosis. Co-investigator.</p></div></div>
+        <div class="funding-item"><div class="funding-amount">£19,775</div><div><div class="funding-title">EPSRC H-IAA FoF</div><p>Ultrafast acoustic nanoparticle centrifuge for dengue virus enrichment. Co-investigator and named Research Assistant.</p></div></div>
+        <div class="funding-item"><div class="funding-amount">£93,000</div><div><div class="funding-title">EPSRC-Industry DTP Studentship</div><p>Acoustofluidics Manipulation of Cells and Tissue for Precision Biomedicine. Proposal drafted by X. Zhang.</p></div></div>
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top: 24px;">
+      <div class="section-card">
+        <h2>Selected recognition</h2>
+        <ul>
+          <li>Research featured by Cancer Research UK News for acoustofluidic vesicle-enrichment technology in prostate cancer liquid biopsy.</li>
+          <li>Granted the UK Global Talent Visa with endorsement from UKRI.</li>
+          <li>First award in High-End Equipment Manufacturing, 7th China Shenzhen Innovation and Entrepreneurship International Competition.</li>
+        </ul>
+      </div>
+
+      <div class="section-card">
+        <h2>Talks and presentations</h2>
+        <ul>
+          <li>Invited talk at German Cancer Research Center Site Dresden on acoustofluidic devices for multiscale biomanipulation.</li>
+          <li>Oral presentation at Microacoustics and Microsensors Symposium 2025, Dyson Institute of Engineering and Technology.</li>
+          <li>Poster at UK Acoustofluidics SIG Meeting, University of Cambridge, on acoustic-enhanced transdermal delivery.</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div>
+        <h2>Let’s connect</h2>
+        <p>Interested in acoustofluidics, liquid biopsy, cytometry, or translational biomedical devices?</p>
+      </div>
+      <a href="mailto:zhangx183@cardiff.ac.uk">zhangx183@cardiff.ac.uk</a>
+    </footer>
+  </main>
+</body>
+</html>
